@@ -1,0 +1,36 @@
+package edu.duke.ece651.risc.shared;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class AttackOwnershipCheckerTest {
+  @Test
+  public void test_myRule() {
+    TextPlayer p1 = new TextPlayer(0, "Bob");
+    TextPlayer p2 = new TextPlayer(1, "Sue");
+
+    Territory t1 = new Territory(3, p1, "t1");
+    Territory t2 = new Territory(4, p1, "t2");
+    Territory t3 = new Territory(1, p2, "t3");
+    Territory t4 = new Territory(3, p2, "t4");
+
+    AttackAction m1 = new AttackAction(p1, t3, t1, 0);
+    AttackAction m2 = new AttackAction(p2, t1, t3, 0);
+    AttackAction m3 = new AttackAction(p1, t1, t1, 0);
+    AttackAction m4 = new AttackAction(p2, t4, t3, 0);
+    AttackAction m5 = new AttackAction(p1, t3, t4, 0);
+    AttackAction m6 = new AttackAction(p1, t2, t3, 0);
+    
+    AttackOwnershipChecker aoc = new AttackOwnershipChecker(null);
+
+    assertNull(aoc.checkMyRule(m1));
+    assertNull(aoc.checkMyRule(m2));
+    assertNotNull(aoc.checkMyRule(m3));
+    assertNotNull(aoc.checkMyRule(m4));
+    assertNotNull(aoc.checkMyRule(m5));
+    assertNotNull(aoc.checkMyRule(m6));
+
+  }
+
+}

@@ -1,0 +1,70 @@
+.label {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.slider {
+    -fx-show-tick-labels: true;
+    -fx-show-tick-marks: true;
+}
+
+#cancel {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: red,#990000;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+#cancel:hover {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: #770000,#660000;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+#cancel:pressed {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: #660000,#550000;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+#confirm {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: green,#009900;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+#confirm:hover {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: #007700,#006600;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+#confirm:pressed {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: #006600,#005500;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 2, 2;
+    -fx-background-insets: 2, 5;
+}
+
+
+
+
+

@@ -1,0 +1,9 @@
+.borderPane {
+    -fx-background-image: url("blue_space.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1800 1100;
+}
+
+.label {
+    -fx-font-family: "verdana";
+}

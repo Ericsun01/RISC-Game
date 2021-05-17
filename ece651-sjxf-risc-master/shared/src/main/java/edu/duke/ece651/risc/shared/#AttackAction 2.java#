@@ -1,0 +1,146 @@
+package edu.duke.ece651.risc.shared;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class AttackAction extends TwoTerritoryAction implements Serializable {
+
+  /**
+   *Constructor for a new AttackAction
+   *@param player is the player of attacker
+   *@param to is the attacked territory
+   *@param from is the attack territory
+   *@param numUnits is the attacked Units
+   */
+  public AttackAction(Player player, Territory to, Territory from, int numUnits, ArrayList<Unit> units) {
+    super(player, to, from, numUnits, units);
+    
+  }
+
+  public AttackAction(Player player, Territory to, Territory from, int numUnits) {
+    super(player, to, from, numUnits);
+    
+  }
+
+  @Override
+  public void execute(Map map){
+    Territory fromMap = map.getTerritoryByName(from.getTerritoryName());
+    Territory toMap = map.getTerritoryByName(to.getTerritoryName());
+    setFrom(fromMap);
+    setTo(toMap);
+    /execute();
+    
+  }
+
+   @Override
+  public void execute(){
+    Dice attackDice = new Dice();
+    Dice defendDice = new Dice();
+    execute(attackDice, defendDice);
+  }
+  /**
+   *Execute attack action with Dice injection
+   */
+	public void execute(Dice attackDice, Dice defendDice) {
+    owner.dequeueFoodresources(numUnits);
+    for(Unit unit:units){
+      //from.subtractUnit(unit);
+      from.dequeUnit(unit.getLevel());
+    }
+    //Dice attackDice = new Dice();
+    //Dice defendDice = new Dice();
+    //flag ==true means attacker highest-bonus
+    boolean highestAttackTurn = true;
+    while(to.getNumUnits() > 0 && numUnits > 0) {
+      System.out.print("Enter while\n");
+      Unit attackUnit, defenderUnit;
+      if(highestAttackTurn){
+        attackUnit = units.get(units.size()-1);
+        defenderUnit = to.getUnits().get(0);
+      }
+      else{
+        attackUnit = units.get(0);
+        defenderUnit = to.getUnits().get(to.getUnits().size()-1);
+      }
+      
+      int attackNumber = attackDice.rollDiceWithBonus(attackUnit.getLevel());
+      int defenderNumber = defendDice.rollDiceWithBonus(defenderUnit.getLevel());
+      
+      if(attackNumber > defenderNumber){
+        to.getUnits().remove(defenderUnit);
+        Collections.sort(to.getUnits());
+      }
+      else{
+       numUnits--;
+       units.remove(attackUnit);
+       Collections.sort(units);
+      }
+      highestAttackTurn = !highestAttackTurn;
+      
+    }
+    
+    if(numUnits > 0){
+      to.setOwner(from.getOwner());
+      for(Unit unit:units){
+        to.addUnit(unit);
+      }
+    }
+	}
+
+  /**
+   *Checks if action is valid and reduce the foodResource, subUnits for from territory
+   */
+  @Override
+  public String check() {
+    TwoTerritoryActionChecker attackChecker = new EnoughUnitsChecker(new AttackOwnershipChecker(new NeighborTerritoryChecker(new EnoughFoodResourceChecker(null))));
+    String answer = attackChecker.checkInteraction(this);
+    if(answer==null){
+      owner.subtractFoodResources(numUnits);
+      owner.queueFoodresources(numUnits);
+      // TODO: move unit to the queue's unit, remove them from the units
+      //from.subtractNumUnits(numUnits);
+        System.out.print("enter check for\n");
+      for(Unit u:units){
+        from.queueUnit(u.getLevel());
+        from.subtractUnit(u.getLevel());
+      }
+    }
+    return answer;
+
+  }
+
+  public String check(Map map) {
+    Territory fromMap = map.getTerritoryByName(from.getTerritoryName());
+    Territory toMap = map.getTerritoryByName(to.getTerritoryName());
+    setFrom(fromMap);
+    setTo(toMap);
+
+    TwoTerritoryActionChecker attackChecker = new EnoughUnitsChecker(new AttackOwnershipChecker(new NeighborTerritoryChecker(new EnoughFoodResourceChecker(null))));
+    String answer = attackChecker.checkInteraction(this);
+    if(answer==null){
+      owner.subtractFoodResources(numUnits);
+      owner.queueFoodresources(numUnits);
+      // TODO: move unit to the queue's unit, remove them from the units
+      //from.subtractNumUnits(numUnits);
+      for(Unit u:units){
+        from.queueUnit(u.getLevel());
+        from.subtractUnit(u.getLevel());
+      }
+    }
+    return answer;
+
+  }
+
+
+  /**
+   *@return the type of this action as a String
+   */
+  @Override
+  public String getType() {
+    return "AttackAction";
+  }
+
+
+
+}

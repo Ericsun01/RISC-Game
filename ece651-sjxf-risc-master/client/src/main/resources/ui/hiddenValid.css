@@ -1,0 +1,25 @@
+.territory {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: gray, black;
+    -fx-text-fill: black;
+    -fx-background-radius: 10, 10;
+    -fx-background-insets: 2, 5;
+    -fx-background-radius: 5em;
+}
+
+.territory:hover {
+    -fx-background-color: gray, gray;
+    -fx-text-fill: gray;
+    -fx-background-radius: 10, 10;
+    -fx-background-insets: 2, 5;
+    -fx-background-radius: 5em;
+}
+
+.territory:pressed {
+    -fx-background-color: black, black;
+    -fx-text-fill: black;
+    -fx-background-radius: 10, 10;
+    -fx-background-insets: 2, 5;
+    -fx-background-radius: 5em;
+}

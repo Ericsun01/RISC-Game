@@ -1,0 +1,9 @@
+.territory {
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+    -fx-background-color: black, #220000;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 10, 10;
+    -fx-background-insets: 2, 5;
+    -fx-background-radius: 5em;
+}

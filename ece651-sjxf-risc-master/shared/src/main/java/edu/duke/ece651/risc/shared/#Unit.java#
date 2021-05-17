@@ -1,0 +1,47 @@
+package edu.duke.ece651.risc.shared;
+
+
+public class Unit implements Comparable<Unit> {
+  private int level;
+
+  /**
+     *Constructor for a new unit
+     *@param level is the level of this unit
+     */
+  public Unit(int level){
+     this.level = level;
+   }
+
+   /**
+      *Set the level of this unit
+      *@param level is the level to be set
+      */
+   public void setLevel(int level){
+     this.level = level;
+   }
+
+  /**
+     *return the level of this unit
+     */
+x  public int getLevel() {
+    return level;
+  }
+
+  @Override
+  public int compareTo(Unit other) {
+    return (Integer.valueOf(level)).compareTo(Integer.valueOf(other.level));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

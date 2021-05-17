@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="76b4155f-35d0-492c-8992-d7952eed9248" name="67.159.89.51" url="http://67.159.89.51">
+        <fileTransfer rootFolder="/home/js895" accessType="SFTP" host="vcm-18466.vm.duke.edu" port="22" sshConfigId="53314ca5-a58a-473d-8dea-a2afbaf47818" sshConfig="js895@vcm-18466.vm.duke.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

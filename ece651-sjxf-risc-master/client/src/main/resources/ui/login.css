@@ -1,0 +1,70 @@
+.gridPane {
+    -fx-background-image: url("red_space.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1800 1100;
+}
+
+.label {
+    -fx-max-width: infinity;
+    -fx-font-size: 75px;
+    -fx-text-fill: yellow;
+}
+
+#againstAILabel {
+    -fx-font-size: 50px;
+    -fx-text-fill: yellow;
+}
+
+.text-field {
+    -fx-background-color: #111111;
+    -fx-max-width: infinity;
+    -fx-max-height: 100px;
+    -fx-font-size: 40px;
+    -fx-text-fill: yellow;
+    -fx-background-radius: 50, 50;
+}
+
+.button {
+    -fx-max-width: 200;
+    -fx-max-height: 100;
+    -fx-font-size: 30px;
+    -fx-background-color: green,#009900;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 30, 30;
+    -fx-background-insets: 2, 5;
+}
+
+.check-box > .box {
+    -fx-padding: 10px;
+}
+
+.check-box > .box > .mark {
+    -fx-padding: 10px;
+}
+
+.button:hover {
+    -fx-max-width: 200;
+    -fx-max-height: 100;
+    -fx-background-color: #007700,#006600;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 30, 30;
+    -fx-background-insets: 2, 5;
+}
+
+.button:pressed {
+    -fx-max-width: 200;
+    -fx-max-height: 100;
+    -fx-background-color: #006600,#005500;
+    -fx-text-fill: ivory;
+    -fx-background-radius: 30, 30;
+    -fx-background-insets: 2, 5;
+}
+
+#RISCLabel {
+    -fx-max-width: infinity;
+    -fx-font-size: 124px;
+    -fx-text-fill: green;
+    -fx-text-stroke: red;
+    -fx-text-stroke-width: 5px;
+}
+
